@@ -8,7 +8,10 @@
     "url": "git@github.com:kaero/node-bbcore.git"
   },
   "main": "./app.coffee",
-  "dependencies": {},
+  "dependencies": {
+    "sugar": "*",
+    "express": "*"
+  },
   "devDependencies": {},
   "optionalDependencies": {},
   "engines": {
