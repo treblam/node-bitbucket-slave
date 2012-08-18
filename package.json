@@ -1,0 +1,17 @@
+{
+  "author": "Phillip Kovalev <twilightfeel@gmail.com> (http://github.com/kaero)",
+  "name": "bbcore",
+  "description": "BitBucket POST-hook handler",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kaero/node-bbcore.git"
+  },
+  "main": "./app.coffee",
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
