@@ -1,0 +1,9 @@
+{
+  "https://bitbucket.org/USERNAME/REPOSITORY/": {
+    "local": "/path/to/local/repository"
+  },
+
+  "https://bitbucket.org/ANOTHER_USERNAME/ANOTHER_REPOSITORY/": {
+    "local": "/path/to/another/local/repository"
+  }
+}
