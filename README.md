@@ -20,3 +20,7 @@ It needs to node.js and npm has been installed.
 * configure your http-proxy if needed to proxy requests for BitBucket Slave to `127.0.0.1:10101` or change binding address in the `app.coffee`
 * setup a POST service for your BitBucket repository to send requests to BitBucket Slave
 * enjoy!
+
+## Usage
+
+Oh, simply write `#deply` in the commit message and push changes to BitBucket remote.
