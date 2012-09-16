@@ -23,4 +23,4 @@ It needs to node.js and npm has been installed.
 
 ## Usage
 
-Oh, simply write `#deply` in the commit message and push changes to BitBucket remote.
+Oh, simply write `#deploy` in the commit message and push changes to BitBucket remote.
