@@ -1,5 +1,6 @@
 express = require 'express'
-execFile    = require('child_process').execFile
+exec = require('child_process').exec
+execFile = require('child_process').execFile
 config  = require './config.json'
 bodyParser = require 'body-parser'
 router = express.Router()
@@ -26,8 +27,13 @@ router.post '/', (req, res) ->
   res.send 'the post hook was received.'
 
   if local and payload.commits.count((commit)-> /#deploy/.test(commit.message))
-    console.log 'start to execute file.'
-    execFile '/home/ec2-user/projects/node-bitbucket-slave/deploy.sh', { cwd: local }, (err, stdout, stderr)->
+    console.log 'start to execute.'
+    exec 'git pull', { cwd: local }, (err, stdout, stderr)->
+    ###
+    if you want to use execFile instead of exec, comment the line above, uncomment the line below,
+    and copy deploy.example.sh to deploy.sh, then change the path to your deploy.sh.
+    ###
+    # execFile '/path/to/your/deploy.sh', { cwd: local }, (err, stdout, stderr)->
       if err
         console.log 'error ocurred.'
         console.log err
