@@ -23,21 +23,20 @@ router.post '/', (req, res) ->
 
   bburl = payload.canon_url + payload.repository.absolute_url
   local = config[bburl]?.local
+  /\/([\w]+)\/$/.test(bburl)
+  projectName = RegExp.$1
   console.log 'post requested.'
+  console.log 'projectName:', projectName
+  console.log 'local:', local
   res.send 'the post hook was received.'
 
   if local and payload.commits.count((commit)-> /#deploy/.test(commit.message))
     console.log 'start to execute.'
-    exec 'git pull', { cwd: local }, (err, stdout, stderr)->
-    ###
-    if you want to use execFile instead of exec, comment the line above, uncomment the line below,
-    and copy deploy.example.sh to deploy.sh, then change the path to your deploy.sh.
-    ###
-    # execFile '/path/to/your/deploy.sh', { cwd: local }, (err, stdout, stderr)->
+    exec 'git pull && pm2 reload ' + projectName, { cwd: local }, (err, stdout, stderr)->
       if err
         console.log 'error ocurred.'
         console.log err
       else
-        console.log('result ok.')
+        console.log 'result ok.'
 
 app.listen 10101, '127.0.0.1'
