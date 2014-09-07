@@ -10,7 +10,7 @@
   "main": "./app.coffee",
   "dependencies": {
     "sugar": "*",
-    "express": "*",
+    "express": "^4.0.0",
     "body-parser": "*"
   },
   "devDependencies": {},

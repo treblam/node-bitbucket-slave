@@ -23,19 +23,14 @@ router.post '/', (req, res) ->
 
   bburl = payload.canon_url + payload.repository.absolute_url
   local = config[bburl]?.local
-  /\/([\w]+)\/$/.test(bburl)
-  projectName = RegExp.$1
   console.log 'post requested.'
-  console.log 'projectName:', projectName
-  console.log 'local:', local
   res.send 'the post hook was received.'
 
   if local and payload.commits.count((commit)-> /#deploy/.test(commit.message))
     console.log 'start to execute.'
-    exec 'git pull && pm2 reload ' + projectName, { cwd: local }, (err, stdout, stderr)->
+    exec 'git pull', { cwd: local }, (err, stdout, stderr)->
       if err
-        console.log 'error ocurred.'
-        console.log err
+        console.log 'error ocurred.', err
       else
         console.log 'result ok.'
 
